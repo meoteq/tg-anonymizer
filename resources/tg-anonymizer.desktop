@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Telegram Anonymizer
+Comment=Anonymize Telegram HTML exports
+Exec=tg-anonymizer
+Icon=tg-anonymizer
+Categories=Utility;
+Terminal=false

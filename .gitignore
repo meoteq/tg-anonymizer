@@ -1,0 +1,42 @@
+# Rust build output
+/target/
+
+# Cargo local config (static CRT linking) — keep in git
+# /.cargo/config.toml is intentionally committed
+/.cargo/registry/
+/.cargo/git/
+
+# Cargo lock is committed for binary crates (keep for reproducibility)
+# Cargo.lock
+
+# IDE and editor files
+.idea/
+.vscode/
+*.code-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary and debug files
+*.log
+*.bak
+*.tmp
+revert.ps1
+revert.py
+replace.py
+step_*.json
+
+# Test / sample data (Telegram exports — may contain personal data)
+*.html
+*.htm
+
+# AI agent local configs (skills, rules — not part of project source)
+.agents/
+.agent/
