@@ -330,7 +330,12 @@ impl AppState {
                                  }
                                  if open_btn.clicked() {
                                      if let Some(parent) = output_path.parent() {
+                                         #[cfg(target_os = "windows")]
                                          let _ = std::process::Command::new("explorer").arg(parent).spawn();
+                                         #[cfg(target_os = "macos")]
+                                         let _ = std::process::Command::new("open").arg(parent).spawn();
+                                         #[cfg(target_os = "linux")]
+                                         let _ = std::process::Command::new("xdg-open").arg(parent).spawn();
                                      }
                                  }
                              });
