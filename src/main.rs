@@ -8,10 +8,10 @@ use eframe::egui;
 
 const APP_NAME: &str = "Telegram HTML → Markdown Cleaner";
 const APP_ID: &str = "tg-anonymizer";
-const WINDOW_WIDTH: f32 = 600.0;
-const WINDOW_HEIGHT: f32 = 520.0;
-const WINDOW_MIN_WIDTH: f32 = 500.0;
-const WINDOW_MIN_HEIGHT: f32 = 450.0;
+const WINDOW_WIDTH: f32 = 640.0;
+const WINDOW_HEIGHT: f32 = 560.0;
+const WINDOW_MIN_WIDTH: f32 = 520.0;
+const WINDOW_MIN_HEIGHT: f32 = 480.0;
 
 fn load_icon() -> Option<egui::IconData> {
     let icon_bytes = include_bytes!("../resources/tg-anonymizer.png");
