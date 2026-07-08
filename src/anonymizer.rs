@@ -98,6 +98,10 @@ static API_KEY_RE: Lazy<Regex> = Lazy::new(|| {
 static BEARER_RE: Lazy<Regex> = Lazy::new(|| {
     Regex::new(r"(?i)\bBearer\s+[A-Za-z0-9\-_=+/]{20,}\b").unwrap()
 });
+// High-entropy alphanumeric tokens (20+ chars mixing letters and digits)
+static ALNUM_TOKEN_RE: Lazy<Regex> = Lazy::new(|| {
+    Regex::new(r"\b[A-Za-z0-9]{20,}\b").unwrap()
+});
 
 // ─────────────────────────────────────────────────────────────────────────────
 // HTML HELPERS
@@ -174,6 +178,16 @@ fn redact(mut text: String, settings: &AnonymizeSettings, names_re: &Option<Rege
         text = BEARER_RE.replace_all(&text, "[TOKEN]").into_owned();
         text = API_KEY_RE.replace_all(&text, "[TOKEN]").into_owned();
         text = HEX_TOKEN_RE.replace_all(&text, "[TOKEN]").into_owned();
+        text = ALNUM_TOKEN_RE.replace_all(&text, |caps: &regex::Captures| {
+            let matched = caps.get(0).unwrap().as_str();
+            let has_digit = matched.chars().any(|c| c.is_ascii_digit());
+            let has_uppercase = matched.chars().any(|c| c.is_ascii_uppercase());
+            if has_digit && has_uppercase {
+                "[TOKEN]".to_string()
+            } else {
+                matched.to_string()
+            }
+        }).into_owned();
     }
     if settings.hide_cards {
         text = CARD_RE.replace_all(&text, "[CARD]").into_owned();
