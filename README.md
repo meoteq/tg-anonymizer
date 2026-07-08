@@ -20,7 +20,7 @@ A fast, privacy-focused desktop app that converts Telegram chat HTML exports int
 
 ## Usage
 
-1. Export your Telegram chat: **Menu → Settings → Advanced → Export Telegram Data → Only HTML**
+1. Export your Telegram chat: **Open the chat → Click the three-dot menu (⋮) → Export chat history**
 2. Open the application binary (e.g., `tg-anonymizer.exe` on Windows)
 3. Drag the exported `messages*.html` files (or the whole folder) onto the app
 4. Configure which data to anonymize in the **Settings** tab
